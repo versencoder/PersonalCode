@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.util.Stack;
+public class Main{
+	public static void main(String args[]){
+		Scanner in=new Scanner(System.in);
+		while(in.hasNext()){
+			String s=in.nextLine();
+			System.out.println(isCircle(s));
+		}
+		in.close();
+		
+	}
+	public static boolean isCircle(String str){
+		boolean circle=false;
+		Stack<Character> stack=new Stack<Character>();
+		String anotherStr = null;
+		for(int i=0;i<str.length();i++){
+			stack.push(str.charAt(i));
+		}
+		while(!stack.isEmpty())
+			anotherStr+=stack.pop();
+		String subStr=anotherStr.substring(4);
+		if(subStr.equals(str))
+			circle=true;
+		//System.out.println(subStr);
+		return circle;
+	}
+}

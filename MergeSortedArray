@@ -1,0 +1,23 @@
+public class Solution {
+    public void merge(int A[], int m, int B[], int n) {
+        
+        if(n == 0){
+            return;
+        }
+        int index = m + n -1;        
+        while(n >= 1){
+            if(m == 0){
+                A[index--] = B[n-1];
+                n--;
+            }else{
+                int max = Math.max(A[m-1],B[n-1]);
+                A[index--] = max;
+                if(max == A[m-1]){
+                    m--;
+                }else{
+                    n--;
+                }
+            }
+        }   
+    }
+}

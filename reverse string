@@ -1,0 +1,11 @@
+import java.util.Stack;
+public class Solution {
+    public String reverseString(String s) {
+        String str="";
+        Stack<String> stack=new Stack<String>();
+        stack.push(new String(s));
+        while(!stack.isEmpty())
+        str+=stack.pop();
+        return str;
+    }
+}

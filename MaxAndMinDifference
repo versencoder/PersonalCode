@@ -1,0 +1,71 @@
+import java.util.Scanner;
+public class Main {
+	public static void main(String args[]){
+		Scanner in=new Scanner(System.in);
+		while(in.hasNext()){
+			int N=in.nextInt();
+			int array[]=new int[N];
+			for(int i=0;i<N;i++){
+				array[i]=in.nextInt();
+			}
+			sortArray(array);
+			System.out.println(differenceMin(array));
+			System.out.println(differenceMax(array));
+			
+			
+		}
+		
+	}
+	
+	public static void sortArray(int a[])
+	{
+		int arrayTemp;
+		for(int i=0;i<a.length-1;i++){
+			for(int j=i+1;j<a.length;j++){
+				if(a[i]>a[j]){
+					arrayTemp=a[i];
+					a[i]=a[j];
+					a[j]=arrayTemp;
+				}
+			}
+		}
+	}
+	
+	public static int differenceMax(int a[]){
+		int countmin=0,countmax=0;
+		int max=0;
+		if(a[0]==a[a.length-1])
+			max=(a.length)*(a.length-1)/2;
+		else{
+			for(int i=0;i<a.length;i++){
+				if(a[i]==a[0])
+					countmin++;
+				if(a[a.length-1]==a[i])
+					countmax++;
+			}
+			max=countmin*countmax;
+		}
+		
+		return max;
+	}
+	
+	public static int differenceMin(int a[]){//a已经排序完成
+		int m=a[1]-a[0];
+		int mincount=1;
+		if(a[0]==a[a.length-1])
+			mincount=(a.length)*(a.length-1)/2;
+		else{
+			for(int i=1;i<a.length-1;i++){
+				
+				if(m==(a[i+1]-a[i]))
+					mincount++;
+				if(m>(a[i+1]-a[i])){
+					m=a[i+1]-a[i];
+					mincount=1;
+				}
+			}
+		}
+		
+		return mincount;
+	}
+}

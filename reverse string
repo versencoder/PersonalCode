@@ -1,9 +1,11 @@
 import java.util.Stack;
 public class Solution {
     public String reverseString(String s) {
-        String str="";
-        Stack<String> stack=new Stack<String>();
-        stack.push(new String(s));
+         String str="";
+        Stack<Character> stack=new Stack<Character>();
+        char array[]=s.toCharArray();
+        for(char temp:array)
+        	stack.push(temp);
         while(!stack.isEmpty())
         str+=stack.pop();
         return str;
